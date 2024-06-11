@@ -29,8 +29,5 @@ jobs:
           BRANCH: gh-pages
           FOLDER: build  # Assuming your build output is in the 'build' folder
 
-      - name: Debug Git Status
-        run: git status
-
-      - name: Debug Git Remote
-        run: git remote -v
+   - name: Log Token Access
+  run: echo "ACCESS_TOKEN is being used in the workflow."

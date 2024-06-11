@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches:
-      - main  # Trigger the workflow on pushes to the main branch
+      - main
 
 jobs:
   deploy:
@@ -11,25 +12,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'  # Use the appropriate Node.js version
-        
-      - name: Install dependencies and build
+      - name: Print Secret
+        run: echo "Access Token: ${{ secrets.ACCESS_TOKEN }}"
+      
+      - name: Build and deploy
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           yarn install
           yarn build
-      
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build  # Assuming your build output is in the 'build' folder
-
-      - name: Debug Git Status
-        run: git status
-
-      - name: Debug Git Remote
-        run: git remote -v
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git checkout -B gh-pages
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push --force origin gh-pages

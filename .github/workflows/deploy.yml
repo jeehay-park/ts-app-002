@@ -24,13 +24,10 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build  # Assuming your build output is in the 'build' folder
 
-        permissions:
-          contents: write  # Grant write access to repository contents
-      
       - name: Debug Git Status
         run: git status
 

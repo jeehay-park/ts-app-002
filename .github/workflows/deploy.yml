@@ -27,3 +27,9 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build  # Assuming your build output is in the 'build' folder
+
+      - name: Debug Git Status
+        run: git status
+
+      - name: Debug Git Remote
+        run: git remote -v

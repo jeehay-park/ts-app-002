@@ -29,5 +29,5 @@ jobs:
           BRANCH: gh-pages
           FOLDER: build  # Assuming your build output is in the 'build' folder
 
-   - name: Log Token Access
-  run: echo "ACCESS_TOKEN is being used in the workflow."
+      - name: Log Token Access
+        run: echo "ACCESS_TOKEN is being used in the workflow."

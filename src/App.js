@@ -1,12 +1,8 @@
-import './App.css';
+import Page1 from './pages/Page1';
 
 function App() {
   return (
-    <div style={{display : 'flex', justifyContent : 'center'}}>
-      <div>
-        Deployment Testing...
-      </div>
-    </div>
+    <Page1 />
   );
 }
 
